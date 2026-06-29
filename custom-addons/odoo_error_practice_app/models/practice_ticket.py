@@ -6,6 +6,7 @@ class ErrorPracticeTicket(models.Model):
     _description = "Error Practice Ticket"
     _inherit = ["mail.thread", "mail.activity.mixin"]
 
+    assigned_user_id = fields.Many2one("res.users", string="Assigned To")
     name = fields.Char(required=True, tracking=True)
     partner_id = fields.Many2one("res.partner", string="Customer")
     priority = fields.Selection(
