@@ -42,7 +42,7 @@ class ErrorPracticeTicket(models.Model):
 
     # Error 5: button in XML calls action_start, but this method is intentionally
     # named differently. Learner should either rename this method or update XML.
-    def action_mark_start(self):
+    def action_start(self):
         self.write({"state": "in_progress"})
 
     def action_done(self):
