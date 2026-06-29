@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_error_practice_root"
+              name="Error Practice"
+              sequence="20"/>
+
+    <menuitem id="menu_error_practice_ticket"
+              name="Practice Tickets"
+              parent="menu_error_practice_root"
+              action="action_error_practice_ticket"
+              sequence="10"/>
+</odoo>
