@@ -38,7 +38,7 @@ class ErrorPracticeTicket(models.Model):
         # If expected_hours is empty/zero, Odoo can raise:
         # "Compute method failed to assign ..."
         for record in self:
-            if record.expected_hours:
+            # if record.expected_hours:
                 record.remaining_hours = record.expected_hours - record.spent_hours
 
     # Error 5: button in XML calls action_start, but this method is intentionally
