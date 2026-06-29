@@ -24,7 +24,7 @@
                 <header>
                     <!-- Error 5: this button method does not exist in Python. -->
                     <button name="action_start" type="object" string="Start" class="btn-primary"
-                            states="draft"/>
+                            invisible="state != 'draft'"/>
                     <button name="action_done" type="object" string="Done"
                             states="in_progress"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,in_progress,done"/>
