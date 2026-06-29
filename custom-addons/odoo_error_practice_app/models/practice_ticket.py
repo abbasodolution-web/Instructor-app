@@ -39,7 +39,7 @@ class ErrorPracticeTicket(models.Model):
         # "Compute method failed to assign ..."
         for record in self:
             # if record.expected_hours:
-                record.remaining_hours = record.expected_hours - record.spent_hours
+            record.remaining_hours = record.expected_hours - record.spent_hours
 
     # Error 5: button in XML calls action_start, but this method is intentionally
     # named differently. Learner should either rename this method or update XML.
