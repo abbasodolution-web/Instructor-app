@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-# Error 3: access rights model external id is wrong.
-# Correct external id should be model_error_practice_ticket.
-access_error_practice_ticket_user,error.practice.ticket.user,model_error_practice_task,base.group_user,1,1,1,1
