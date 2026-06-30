@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<!-- For Automation Action -->
+<data noupdate="1">
+
+    <!-- Server action that posts the chatter message -->
+    <record id="action_appointment_done_message"
+                model="ir.actions.server">
+        <field name="name">Post Appointment Completed Message</field>
+        <field name="model_id" ref="om_hospital.model_hospital_appointment"/>
+        <field name="binding_model_id" ref="om_hospital.model_hospital_appointment"/>
+        <field name="state">code</field>
+        <field name="code">
+record.message_post(
+    body="Appointment completed successfully."
+)
+        </field>
+    </record>
+    <!-- Base automation rule triggered when state → done -->
+    <record id="automation_appointment_state_done"
+                model="base.automation">
+        <field name="name">Appointment: Notify on Done</field>
+        <field name="model_id" ref="om_hospital.model_hospital_appointment"/>
+        <field name="trigger">on_write</field>
+        <field name="filter_pre_domain">[("state", "!=", "done")]</field>
+        <field name="filter_domain">[("state", "=", "done")]</field>
+        <field name="action_server_ids"
+                eval="[(4, ref('action_appointment_done_message'))]"/>
+        <field name="active" eval="True"/>
+    </record>
+
+</data>
+
+<!-- For Scheduled Acitons -->
+<record id="ir_cron_cancel_old_appointments" model="ir.cron">
+    <field name="name">Cancel Old Appointments</field>
+    <field name="model_id" ref="model_hospital_appointment"/>
+    <field name="state">code</field>
+    <field name="code">
+records = env['hospital.appointment'].search([
+    ('state', '=', 'draft')
+])
+
+for rec in records:
+    if rec.appointment_time:
+        diff = datetime.datetime.now() - rec.appointment_time
+
+        if diff.days >= 5:
+            rec.write({'state': 'cancelled'})
+    </field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+    <field name="active">True</field>
+    <field name="numbercall">-1</field>
+</record>
+
+
+<!-- For Server Action -->
+<record id = "action_mark_as_done" model = "ir.actions.server">
+    <field name="name">Mark As Done</field>
+    <field name="type">ir.actions.server</field>
+    <field name="model_id" ref="model_hospital_appointment"/>
+    <field name="binding_model_id" ref="model_hospital_appointment"/>
+    <field name = "binding_view_types">list</field>
+    <field name = "state">code</field>
+    <field name = "code">
+        for record in records:
+            if record.state == 'in_consultation':
+                record.action_done()
+    </field>
+
+</record>
+
+<!-- Tree View -->
+<record id = "view_hospital_appointment_tree" model = "ir.ui.view">
+    <field name = "name">hospital.appointment.tree</field>
+    <field name = "model">hospital.appointment</field>
+    <field name = "arch" type = "xml">
+        <tree>
+            <field name = "patient_id"/>
+            <field name = "code"/>
+            <field name = "gender"/>
+            <field name = "appointment_time"/>
+            <field name = "booking_date"/>
+            <field name = "state"/>
+        </tree>
+    </field>
+</record>
+
+<!-- Form View -->
+<record  id = "view_hospital_appointment_form" model = "ir.ui.view">
+    <field name = "name">hospital.appointment.form</field>
+    <field name = "model">hospital.appointment</field>
+    <field name =  "arch" type = "xml">
+        <form>
+            <header>
+                <button id = "button_draft" name = "action_draft" string = "Draft" 
+                        invisible = 'state != "cancelled"' class = "btn-primary" 
+                        type = "object"/>
+                <button id = "button_confirm" name = "action_confirm" 
+                        string = "Confirm" invisible = 'state != "draft"' class = "btn-primary" 
+                        type = "object"/>
+                <button id = "button_done" name = "action_done" string = "Done"
+                        class = "btn-primary" invisible = 'state != "in_consultation"' 
+                        type = "object"/>
+                <button id = "button_cancel" name = "action_cancel" string = "Cancel"
+                        type = "object"/>
+                <field 
+                    name = "state" 
+                    widget = "statusbar" 
+                    nolabel="1" options = "{'clickable': '1'}"
+                    statusbar_visible = "draft,in_consultation,done"   
+                />
+            </header>
+            <sheet>
+                <group>
+                    <group>
+                        <field name = "patient_id"/>
+                        <field name="code" readonly="1" force_save="1"/>
+                        <field name = "text"/>
+                    </group>
+                </group>
+
+
+                <notebook>
+                    <page string = "General">
+                        <group>
+                            <field name="priority" widget="priority"/>
+                            <field name = "age" readonly="1" force_save="1"/>
+                            <field name = "gender"/>
+                            <field name="blood_group" readonly="1" force_save="1"/>
+                        </group>
+                    </page>
+
+                    <page string = "Contact" readonly="1" force_save="1">
+                        <group>
+                            <field name = "phone" readonly="1" force_save="1"/>
+                            <field name = "email" readonly="1" force_save="1"/>
+                        </group>
+                    </page>
+
+                    <page string = "Notes">
+                        <group>
+                            <field name = "notes" readonly="1" force_save="1"/>
+                        </group>
+                    </page>
+                </notebook>
+            </sheet>
+
+
+                <!-- This is the old template of writing form -->
+                        <!-- <field name = "booking_date"/>
+                        <field name = "appointment_time"/>
+                            <button name="action_test"
+                                string="Object Button"
+                                type="object"
+                                confirm="Are you sure you want to execute python code?"
+                                class="oe_highlight btn-primary text-nowrap"/>
+                           
+                            <button name="%(om_hospital.action_hopital_patient)d"
+                                string="Action Button"
+                                type="action"
+                                confirm="Are you sure you want to open patients?"
+                                class="oe_highlight btn-primary text-nowrap"/>
+                    </group>
+                </group> -->
+            <div class = "oe_chatter">
+                <field name = "message_follower_ids" group = "base.group_user"/>
+                <field name = "activity_ids"/>
+                <field name = "message_ids"/>
+            </div>
+        </form>
+    </field>
+</record>
+
+<!-- Search -->
+<record id = "view_hospital_appointment_search" model = "ir.ui.view">
+    <field name = "name">hospital.appointment.search</field>
+    <field name = "model">hospital.appointment</field>
+    <field name = "arch" type = "xml">
+        <search>
+            <field name = "patient_id"/>
+            <field name = "appointment_time"/>
+            <field name = "booking_date"/>
+            <field name = "code"/>
+        </search>
+    </field>
+</record>
+
+<!--Main Action -->
+    <record id = "action_hopital_appointment" model = "ir.actions.act_window">
+    <field name = "name">Appointments</field>
+    <field name = "type">ir.actions.act_window</field>
+    <field name = "res_model">hospital.appointment</field>
+    <field name = "view_mode">tree,form</field>
+    <field name = "context">{}</field>
+    <field name = "help" type = "html">
+        <p class = "o_view_nocontent_smiling_face">
+            Create your first appointment.
+        </p>
+    </field>
+    </record>
+
+<!--Appointments Menu-->
+    <menuitem id = "menu_appointment"
+                    name = "Appointments"
+                    action = "action_hopital_appointment"
+                    parent = "menu_appointment_master"
+                    sequence = "20"/>
+</odoo>
