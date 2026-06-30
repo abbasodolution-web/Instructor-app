@@ -22,3 +22,10 @@ class LibraryBook(models.Model):
         if vals.get('name', 'New') == 'New':
             vals['name'] = self.env['ir.sequence'].next_by_code('library.book') or 'New'
         return super().create(vals)
+    
+    def name_get(self):
+        result = []
+        for record in self:
+            name = f"{record.name} - {record.book_name}"
+            result.append((record.id, name))
+        return result

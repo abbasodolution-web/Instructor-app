@@ -5,6 +5,7 @@
     'description': 'Manage books, members, book issues and reports.',
     'category': 'Library',
     'author': 'SMAbbasS',
+    'sequence': -300,
     'license': 'LGPL-3',
     'depends': ['base'],
     'data': [
