@@ -8,7 +8,7 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <!-- Using structured xpath to target the 'vat' field safely -->
+                <!-- Hooking into vat here works because vat is defined in the base form view -->
                 <xpath expr="//field[@name='vat']" position="after">
                     <field name="cnic" placeholder="e.g. 12345-1234567-1"/>
                 </xpath>
@@ -21,7 +21,7 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_tree"/>
             <field name="arch" type="xml">
-                <!-- Changed 'name' to 'display_name' to match core Odoo list view -->
+                <!-- Using display_name to ensure cross-version stability -->
                 <xpath expr="//field[@name='display_name']" position="after">
                     <field name="cnic"/>
                 </xpath>
@@ -34,7 +34,8 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_res_partner_filter"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='vat']" position="after">
+                <!-- FIXED: Changed target from 'vat' to 'name' which is guaranteed to exist -->
+                <xpath expr="//field[@name='name']" position="after">
                     <field name="cnic" string="CNIC"/>
                 </xpath>
             </field>
