@@ -49,12 +49,4 @@
         action="action_library_issue"
         sequence="3"/>
 
-    <!-- Reports -->
-    <menuitem
-        id="menu_library_report"
-        name="Reports"
-        parent="menu_library_root"
-        action="action_library_report"
-        sequence="4"/>
-
 </odoo>
