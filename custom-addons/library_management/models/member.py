@@ -23,9 +23,8 @@ class LibraryMember(models.Model):
         if vals.get('name', 'New') == 'New':
             vals['name'] = self.env['ir.sequence'].next_by_code('library.member') or 'New'
         return super().create(vals)
-    def name_get(self):
-        result = []
+    
+    @api.depends('name', 'member_name')
+    def _compute_display_name(self):
         for record in self:
-            name = f"{record.name} - {record.member_name}"
-            result.append((record.id, name))
-        return result
+            record.display_name = f"{record.name} - {record.member_name}"
