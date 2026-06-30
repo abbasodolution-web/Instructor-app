@@ -14,7 +14,7 @@
             </field>
         </record>
 
-        <!-- Optional: add CNIC as a searchable/filterable column in list view -->
+        <!-- Optional: add CNIC as a searchable/filterable column in list view
         <record id="view_partner_tree_inherit_cnic" model="ir.ui.view">
             <field name="name">res.partner.tree.inherit.cnic</field>
             <field name="model">res.partner</field>
@@ -39,4 +39,4 @@
         </record>
 
     </data>
-</odoo>
+</odoo> -->
