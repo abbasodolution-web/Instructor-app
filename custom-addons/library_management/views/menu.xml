@@ -5,7 +5,8 @@
     <menuitem
         id="menu_library_root"
         name="Library"
-        sequence="1"/>
+        sequence="1"
+        web_icon="library_management,static/description/icon.png"/>/>
 
     <!-- Books -->
     <record id="action_library_book" model="ir.actions.act_window">
