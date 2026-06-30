@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="library_book_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="book">
+                <t t-call="web.external_layout">
+
+                    <div class="page">
+                        <h2>Library Book Report</h2>
+
+                        <table class="table table-sm">
+                            <tr>
+                                <td><strong>Book ID</strong></td>
+                                <td><span t-field="book.name"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Book Name</strong></td>
+                                <td><span t-field="book.book_name"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Author</strong></td>
+                                <td><span t-field="book.author"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Category</strong></td>
+                                <td><span t-field="book.category"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Publisher</strong></td>
+                                <td><span t-field="book.publisher"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>ISBN</strong></td>
+                                <td><span t-field="book.isbn"/></td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
