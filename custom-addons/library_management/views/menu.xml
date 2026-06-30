@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Root Menu -->
+    <menuitem
+        id="menu_library_root"
+        name="Library"
+        sequence="1"/>
+
+    <!-- Books -->
+    <record id="action_library_book" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">library.book</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_library_book"
+        name="Books"
+        parent="menu_library_root"
+        action="action_library_book"
+        sequence="1"/>
+
+    <!-- Members -->
+    <record id="action_library_member" model="ir.actions.act_window">
+        <field name="name">Members</field>
+        <field name="res_model">library.member</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_library_member"
+        name="Members"
+        parent="menu_library_root"
+        action="action_library_member"
+        sequence="2"/>
+
+    <!-- Book Issue -->
+    <record id="action_library_issue" model="ir.actions.act_window">
+        <field name="name">Book Issue</field>
+        <field name="res_model">library.book.issue</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_library_issue"
+        name="Book Issue"
+        parent="menu_library_root"
+        action="action_library_issue"
+        sequence="3"/>
+
+    <!-- Reports -->
+    <menuitem
+        id="menu_library_report"
+        name="Reports"
+        parent="menu_library_root"
+        action="action_library_report"
+        sequence="4"/>
+
+</odoo>
