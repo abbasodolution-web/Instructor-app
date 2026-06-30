@@ -1,0 +1,27 @@
+{
+    'name': 'Library Management System',
+    'version': '17.0.1.0.0',
+    'summary': 'Library Management System',
+    'description': 'Manage books, members, book issues and reports.',
+    'category': 'Library',
+    'author': 'Your Name',
+    'license': 'LGPL-3',
+    'depends': ['base'],
+    'data': [
+        'security/ir.model.access.csv',
+
+        'data/sequence.xml',
+
+        'views/menu.xml',
+        'views/book_views.xml',
+        'views/member_views.xml',
+        'views/book_issue_views.xml',
+        'views/report_views.xml',
+
+        'report/library_report.xml',
+        'report/library_report_template.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+}
