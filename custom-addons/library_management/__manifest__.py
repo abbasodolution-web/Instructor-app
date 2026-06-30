@@ -4,7 +4,7 @@
     'summary': 'Library Management System',
     'description': 'Manage books, members, book issues and reports.',
     'category': 'Library',
-    'author': 'Your Name',
+    'author': 'SMAbbasS',
     'license': 'LGPL-3',
     'depends': ['base'],
     'data': [
