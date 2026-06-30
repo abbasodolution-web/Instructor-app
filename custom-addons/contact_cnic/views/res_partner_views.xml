@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Add CNIC field to Contact form view -->
+        <record id="view_partner_form_inherit_cnic" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.cnic</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="vat" position="after">
+                    <field name="cnic" placeholder="e.g. 12345-1234567-1"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Optional: add CNIC as a searchable/filterable column in list view -->
+        <record id="view_partner_tree_inherit_cnic" model="ir.ui.view">
+            <field name="name">res.partner.tree.inherit.cnic</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="cnic" optional="hide"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Optional: allow searching contacts by CNIC -->
+        <record id="view_res_partner_filter_inherit_cnic" model="ir.ui.view">
+            <field name="name">res.partner.search.inherit.cnic</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <field name="vat" position="after">
+                    <field name="cnic" string="CNIC"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>
