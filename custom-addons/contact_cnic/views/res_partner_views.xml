@@ -8,7 +8,6 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-                <!-- Hooking into vat here works because vat is defined in the base form view -->
                 <xpath expr="//field[@name='vat']" position="after">
                     <field name="cnic" placeholder="e.g. 12345-1234567-1"/>
                 </xpath>
@@ -21,7 +20,6 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_tree"/>
             <field name="arch" type="xml">
-                <!-- Using display_name to ensure cross-version stability -->
                 <xpath expr="//field[@name='display_name']" position="after">
                     <field name="cnic"/>
                 </xpath>
@@ -34,7 +32,6 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_res_partner_filter"/>
             <field name="arch" type="xml">
-                <!-- FIXED: Changed target from 'vat' to 'name' which is guaranteed to exist -->
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="cnic" string="CNIC"/>
                 </xpath>
