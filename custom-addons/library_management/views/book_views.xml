@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_library_book_tree" model="ir.ui.view">
+        <field name="name">library.book.tree</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="book_name"/>
+                <field name="author"/>
+                <field name="category"/>
+                <field name="available_copies"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_library_book_form" model="ir.ui.view">
+        <field name="name">library.book.form</field>
+        <field name="model">library.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="book_name"/>
+                        <field name="author"/>
+                        <field name="category"/>
+                        <field name="publisher"/>
+                        <field name="isbn"/>
+                        <field name="purchase_date"/>
+                        <field name="price"/>
+                        <field name="available"/>
+                        <field name="total_copies"/>
+                        <field name="available_copies"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
