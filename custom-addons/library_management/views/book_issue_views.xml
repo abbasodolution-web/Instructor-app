@@ -28,7 +28,8 @@
                         name="action_return_book"
                         string="Return Book"
                         type="object"
-                        class="btn-primary"/>
+                        class="btn-primary"
+                        invisible="status == 'returned'"/>
                 </header>
                 <sheet>
                     <group>
