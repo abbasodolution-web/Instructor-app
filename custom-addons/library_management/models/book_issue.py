@@ -19,7 +19,7 @@ class LibraryBookIssue(models.Model):
         ('issued', 'Issued'),
         ('returned', 'Returned'),
         ('late', 'Late'),
-    ], default='issued')
+    ],)
 
     @api.model
     def create(self, vals):
