@@ -28,5 +28,5 @@ class ReturnBookWizard(models.TransientModel):
             'status': 'returned',
             'return_date': self.return_date,
         })
-
+        self.book_issue_id.book_id.available_copies += 1
         return {'type': 'ir.actions.act_window_close'}

@@ -36,5 +36,7 @@ class IssueBookWizard(models.TransientModel):
             'issue_date': self.issue_date,
             'due_date' : self.due_date,
         })
-
+        if self.book_issue_id.book_id.available_copies <= 0:
+            raise ValidationError("No copies available.")
+        self.book_issue_id.book_id.available_copies -= 1
         return {'type': 'ir.actions.act_window_close'}
