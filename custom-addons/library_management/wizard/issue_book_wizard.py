@@ -33,7 +33,7 @@ class IssueBookWizard(models.TransientModel):
 
         self.book_issue_id.write({
             'status': 'issued',
-            'issue_date': self.issue_date_date,
+            'issue_date': self.issue_date,
             'due_date' : self.due_date,
         })
 
