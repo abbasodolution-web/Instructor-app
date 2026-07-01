@@ -60,4 +60,7 @@ class LibraryBookIssue(models.Model):
             'res_model': 'return.book.wizard',
             'view_mode': 'form',
             'target': 'new',
+            'context': {
+                'default_book_issue_id': self.id,
+            },
         }
