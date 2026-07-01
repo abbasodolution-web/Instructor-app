@@ -31,6 +31,13 @@
                         class="btn-primary"
                         invisible="status == 'returned'"/>
                 </header>
+                    <button
+                        name="action_issue_book"
+                        string="Issue Book"
+                        type="object"
+                        class="btn-primary"
+                        invisible="status == 'issued'"/>
+                </header>
                 <sheet>
                     <group>
                         

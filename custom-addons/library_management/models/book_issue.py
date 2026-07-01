@@ -64,3 +64,14 @@ class LibraryBookIssue(models.Model):
                 'default_book_issue_id': self.id,
             },
         }
+    def action_issue_book(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Issue Book',
+            'res_model': 'issue.book.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_book_issue_id': self.id,
+            },
+        }

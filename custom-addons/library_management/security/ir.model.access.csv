@@ -3,3 +3,4 @@ access_library_book,library.book,model_library_book,,1,1,1,1
 access_library_member,library.member,model_library_member,,1,1,1,1
 access_library_book_issue,library.book.issue,model_library_book_issue,,1,1,1,1
 access_return_book_wizard,return.book.wizard,model_return_book_wizard,,1,1,1,1
+access_issue_book_wizard,issue.book.wizard,model_issue_book_wizard,,1,1,1,1
