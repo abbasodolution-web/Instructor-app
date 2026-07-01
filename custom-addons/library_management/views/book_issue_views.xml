@@ -23,6 +23,13 @@
         <field name="model">library.book.issue</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button
+                        name="action_return_book"
+                        string="Return Book"
+                        type="object"
+                        class="btn-primary"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="name" readonly="1"/>

@@ -52,3 +52,12 @@ class LibraryBookIssue(models.Model):
                 record.book_id.available_copies -= 1
 
             return result
+    
+    def action_return_book(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Return Book',
+            'res_model': 'return.book.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+        }

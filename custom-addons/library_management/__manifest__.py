@@ -19,6 +19,7 @@
         'views/book_issue_views.xml',
         'views/report_views.xml',
 
+        'return_book_wizard_views.xml',
         'report/library_report.xml',
         'report/library_report_template.xml',
     ],
