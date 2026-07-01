@@ -10,6 +10,7 @@
                 <group>
                     <field name="return_date"/>
                     <field name="remarks"/>
+                    <field name="book_issue_id" invisible="1"/>
                 </group>
 
                 <footer>
