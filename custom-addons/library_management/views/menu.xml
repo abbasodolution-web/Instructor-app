@@ -50,4 +50,18 @@
         action="action_library_issue"
         sequence="3"/>
 
+
+    <record id="action_book_availability_wizard" model="ir.actions.act_window">
+        <field name="name">Check Book Availability</field>
+        <field name="res_model">book.availability.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="menu_book_availability_wizard"
+        name="Check Availability"
+        parent="menu_library_root"
+        action="action_book_availability_wizard"
+        sequence="5"/>
 </odoo>

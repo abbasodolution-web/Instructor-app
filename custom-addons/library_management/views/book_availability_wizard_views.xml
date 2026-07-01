@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form View -->
+    <record id="view_book_availability_wizard_form" model="ir.ui.view">
+        <field name="name">book.availability.wizard.form</field>
+        <field name="model">book.availability.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Check Book Availability">
+
+                <group>
+                    <field name="book_id"/>
+
+                    <field name="total_copies" readonly="1"/>
+                    <field name="available_copies" readonly="1"/>
+                    <field name="status" readonly="1"/>
+                </group>
+
+                <footer>
+
+                    <button
+                        name="action_check"
+                        string="Check"
+                        type="object"
+                        class="btn-primary"/>
+
+                    <button
+                        string="Cancel"
+                        special="cancel"/>
+
+                </footer>
+
+            </form>
+        </field>
+    </record>
+
+</odoo>

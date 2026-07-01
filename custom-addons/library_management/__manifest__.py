@@ -13,14 +13,17 @@
 
         'data/sequence.xml',
 
+        
         'views/menu.xml',
         'views/book_views.xml',
         'views/member_views.xml',
-        'views/return_book_wizard_views.xml',
-        'views/issue_book_wizard_views.xml',
         'views/book_issue_views.xml',
         'views/report_views.xml',
 
+        'views/book_availability_wizard_views.xml',
+        'views/return_book_wizard_views.xml',
+        'views/issue_book_wizard_views.xml',
+        
         'report/library_report.xml',
         'report/library_report_template.xml',
     ],
