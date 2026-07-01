@@ -30,7 +30,7 @@
                         type="object"
                         class="btn-primary"
                         invisible="status == 'returned'"/>
-                </header>
+    
                     <button
                         name="action_issue_book"
                         string="Issue Book"
