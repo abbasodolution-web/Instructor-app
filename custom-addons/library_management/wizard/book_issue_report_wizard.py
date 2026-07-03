@@ -62,7 +62,7 @@ class BookIssueReportWizard(models.TransientModel):
         sheet.set_column('B:B', 20)
         sheet.set_column('C:C', 28)
         sheet.set_column('D:D', 15)
-        sheet.set_column('E:E', 30)
+        sheet.set_column('E:E', 40)
         sheet.set_column('F:H', 15)
 
         # Title
