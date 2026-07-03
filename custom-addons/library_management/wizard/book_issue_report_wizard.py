@@ -58,12 +58,12 @@ class BookIssueReportWizard(models.TransientModel):
         })
 
         # Column widths
-        sheet.set_column('A:A', 12)
-        sheet.set_column('B:B', 20)
+        sheet.set_column('A:A', 9)
+        sheet.set_column('B:B', 10)
         sheet.set_column('C:C', 28)
-        sheet.set_column('D:D', 15)
-        sheet.set_column('E:E', 40)
-        sheet.set_column('F:H', 15)
+        sheet.set_column('D:D', 10)
+        sheet.set_column('E:E', 50)
+        sheet.set_column('F:H', 10)
 
         # Title
         sheet.merge_range('A1:H1', 'Library Book Issue Report', title_format)
