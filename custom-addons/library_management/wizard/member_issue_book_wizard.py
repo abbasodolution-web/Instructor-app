@@ -7,7 +7,7 @@ class MemberIssueBookWizard(models.TransientModel):
     _description = 'Member Issue Book Wizard'
 
     book_issue_id = fields.Many2one(
-        'library.book.issue',
+        'library.member',
         string="Book Issued"
     )
     member_id = fields.Many2one('library.member', string='Member', required=True, readonly=True)
