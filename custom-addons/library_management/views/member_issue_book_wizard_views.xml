@@ -11,7 +11,6 @@
                     <field name="book_id"/>
                     <field name="issue_date"/>
                     <field name="due_date"/>
-                    <field name="book_issue_id" invisible="1"/>
                 </group>
 
                 <footer>

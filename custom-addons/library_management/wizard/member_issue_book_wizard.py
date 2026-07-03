@@ -5,11 +5,7 @@ from odoo.exceptions import ValidationError
 class MemberIssueBookWizard(models.TransientModel):
     _name = 'member.issue.book.wizard'
     _description = 'Member Issue Book Wizard'
-
-    book_issue_id = fields.Many2one(
-        'library.member',
-        string="Book Issued"
-    )
+    
     member_id = fields.Many2one('library.member', string='Member', required=True, readonly=True)
     book_id = fields.Many2one('library.book', string='Book', required=True)
     issue_date = fields.Date(string='Issue Date', default=fields.Date.today)

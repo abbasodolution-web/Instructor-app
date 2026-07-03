@@ -5,7 +5,6 @@ class LibraryMember(models.Model):
     _name = 'library.member'
     _description = 'Library Member'
 
-    book_id = fields.Many2one('library.book', string="Book", required=True)
     name = fields.Char(string="Member ID", required=True, copy=False, readonly=True, default="New")
     member_name = fields.Char(string="Name", required=True)
     email = fields.Char(string="Email")
