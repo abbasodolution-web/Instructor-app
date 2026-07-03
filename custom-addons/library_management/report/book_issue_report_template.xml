@@ -37,7 +37,7 @@
                                     <td><span t-esc="line['member_name']"/></td>
                                     <td><span t-esc="line['member_email']"/></td>
                                     <td><span t-esc="line['issue_id']"/></td>
-                                    <td><span t-esc="line['book_id']"/></td>
+                                    <td><span t-esc="line['book_names']"/></td>
                                     <td><span t-esc="line['issue_date']"/></td>
                                     <td><span t-esc="line['due_date']"/></td>
                                     <td><span t-esc="line['return_date']"/></td>

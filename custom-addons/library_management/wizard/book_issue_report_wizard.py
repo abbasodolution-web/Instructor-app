@@ -22,7 +22,7 @@ class BookIssueReportWizard(models.TransientModel):
 
         data = []
         for issue in issues:
-            books = issue.book_id.name if issue.book_id else ''
+            books = issue.book_id.book_name if issue.book_id else ''
             data.append({
                 'member_id': issue.member_id.id or '',
                 'member_name': issue.member_id.name or '',
