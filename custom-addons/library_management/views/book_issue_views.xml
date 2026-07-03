@@ -24,7 +24,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <field name="status" widget="statusbar" statusbar_visible="draft,issued,returned"/>
+                    <field name="status" widget="statusbar" options = "{'clickable': '1'}" statusbar_visible="draft,issued,returned"/>
                     <button
                         name="action_return_book"
                         string="Return Book"

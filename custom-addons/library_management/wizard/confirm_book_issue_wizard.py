@@ -17,7 +17,7 @@ class ConfirmBookIssueWizard(models.TransientModel):
             'book_id': self.book_id.id,
             'issue_date': self.issue_date,
             'due_date': self.due_date,
-            'status': 'confirmed',
+            'status': 'issued',
         })
 
         return {'type': 'ir.actions.act_window_close'}
