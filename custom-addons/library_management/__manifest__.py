@@ -25,6 +25,7 @@
         'views/issue_book_wizard_views.xml',
         'views/confirm_book_issue_wizard_views.xml',
         'views/member_issue_book_wizard_views.xml',
+        'views/book_issue_report_wizard_views.xml',
 
         'report/library_report.xml',
         'report/library_report_template.xml',

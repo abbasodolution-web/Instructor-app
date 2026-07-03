@@ -48,7 +48,6 @@
                             <field name="book_issue_ids">
                                 <tree>
                                     <field name="name"/>
-                                    <field name="book_names"/>
                                     <field name="book_id"/>
                                     <field name="issue_date"/>
                                     <field name="due_date"/>
