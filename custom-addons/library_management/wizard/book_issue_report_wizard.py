@@ -39,7 +39,11 @@ class BookIssueReportWizard(models.TransientModel):
             'bg_color': '#D9EAF7',
             'border': 1,
         })
-
+        book_format = workbook.add_format({
+            'align': 'left',
+            'valign': 'vcenter',
+            'border': 1,
+        })
         cell_format = workbook.add_format({
             'align': 'center',
             'valign': 'vcenter',
@@ -92,14 +96,11 @@ class BookIssueReportWizard(models.TransientModel):
             # If you use line_ids design:
             books = issue.book_id.book_name if issue.book_id else ''
 
-            # If you use direct book_id design instead, use this line and comment the above one:
-            # books = issue.book_id.name if issue.book_id else ''
-
             sheet.write(row, 0, issue.member_id.id or '', cell_format)
             sheet.write(row, 1, issue.member_id.name or '', cell_format)
             sheet.write(row, 2, issue.member_id.email or '', cell_format)
             sheet.write(row, 3, issue.name or '', cell_format)
-            sheet.write(row, 4, books, cell_format)
+            sheet.write(row, 4, books, book_format)
             sheet.write(row, 5, str(issue.issue_date or ''), cell_format)
             sheet.write(row, 6, str(issue.due_date or ''), cell_format)
             sheet.write(row, 7, str(issue.return_date or ''), cell_format)
