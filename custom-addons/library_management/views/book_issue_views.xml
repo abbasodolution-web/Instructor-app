@@ -42,7 +42,7 @@
                 <sheet>
                     <group>
                         
-                        <field name="name" readonly="1" readonly="status == 'confirmed'"/>
+                        <field name="name" readonly="1"/>
                         <field name="member_id" readonly="status == 'confirmed'"/>
                         <field name="book_id" readonly="status == 'confirmed'"/>
                         <field name="issue_date" readonly="status == 'confirmed'"/>
