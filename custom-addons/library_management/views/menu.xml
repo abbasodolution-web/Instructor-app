@@ -68,8 +68,8 @@
     <!-- For Report -->
     <!-- Reports Main Menu -->
     <menuitem id="menu_library_reports"
-            name="Reports"
-            parent="menu_library_root"
-            sequence="6"/>
-
+          name="Reports"
+          parent="menu_library_root"
+          action="action_book_issue_report_wizard"
+          sequence="6"/>
 </odoo>
