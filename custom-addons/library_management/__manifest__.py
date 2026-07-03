@@ -29,6 +29,8 @@
 
         'report/library_report.xml',
         'report/library_report_template.xml',
+        'report/book_issue_report_template.xml',
+        'report/book_issue_report_action.xml',
     ],
     'installable': True,
     'application': True,

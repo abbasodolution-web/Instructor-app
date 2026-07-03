@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_book_issue_pdf" model="ir.actions.report">
+        <field name="name">Book Issue PDF Report</field>
+        <field name="model">book.issue.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">library_management.report_book_issue_pdf</field>
+        <field name="report_file">library_management.report_book_issue_pdf</field>
+        <field name="binding_model_id" ref="model_book_issue_report_wizard"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>
