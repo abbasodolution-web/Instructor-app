@@ -15,16 +15,16 @@ class LibraryBookIssue(models.Model):
     due_date = fields.Date(string="Due Date")
     return_date = fields.Date(string="Return Date")
 
-    status = fields.Selection([
-        ('issued', 'Issued'),
-        ('returned', 'Returned'),
-        ('late', 'Late'),
-    ],)
+    # status = fields.Selection([
+    #     ('issued', 'Issued'),
+    #     ('returned', 'Returned'),
+    #     ('late', 'Late'),
+    # ],)
     status = fields.Selection([
         ('draft', 'Draft'),
-        ('confirmed', 'Confirmed'),
+        ('issued', 'Issued'),
         ('returned', 'Returned'),
-    ], string='Status', default='draft', tracking=True)
+    ], string='Status', default='draft')
 
     @api.model
     def create(self, vals):
