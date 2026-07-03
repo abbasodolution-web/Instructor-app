@@ -34,6 +34,7 @@
                 </header>
                 <sheet>
                     <group>
+                        <field name="book_id" invisible = "1"/>
                         <field name="name" readonly="1"/>
                         <field name="member_name"/>
                         <field name="email"/>
