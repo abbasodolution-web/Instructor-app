@@ -10,7 +10,7 @@ class IssueBookWizard(models.TransientModel):
 
     book_issue_id = fields.Many2one(
         'library.book.issue',
-        string="Book Return"
+        string="Book Issued"
     )
 
     issue_date = fields.Date(
