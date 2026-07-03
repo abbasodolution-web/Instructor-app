@@ -13,7 +13,7 @@ class MemberIssueBookWizard(models.TransientModel):
         ('draft', 'Draft'),
         ('issued', 'Issued'),
         ('returned', 'Returned'),
-    ], string='Status', default='confirmed')
+    ], string='Status', default='draft')
 
     def action_confirm(self):
         self.env['library.book.issue'].create({
