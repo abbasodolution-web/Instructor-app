@@ -7,7 +7,7 @@
     'author': 'SMAbbasS',
     'sequence': -300,
     'license': 'LGPL-3',
-    'depends': ['base'],
+    'depends': ['base','mail'],
     'data': [
         'security/ir.model.access.csv',
 

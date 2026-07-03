@@ -6,6 +6,7 @@ from dateutil.relativedelta import relativedelta
 
 class IssueBookWizard(models.TransientModel):
     _name = 'issue.book.wizard'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Issue Book Wizard'
 
     book_issue_id = fields.Many2one(
