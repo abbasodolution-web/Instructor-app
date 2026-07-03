@@ -22,6 +22,16 @@
         <field name="model">library.member</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="action_open_issue_wizard"
+                            string="Issue Book"
+                            type="object"
+                            class="btn-primary"/>
+
+                    <button name="action_view_book_issues"
+                            string="View Book Issues"
+                            type="object"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="name" readonly="1"/>

@@ -17,6 +17,11 @@ class LibraryMember(models.Model):
         ('public', 'Public'),
     ], string="Membership Type")
     active = fields.Boolean(string="Active", default=True)
+    book_issue_ids = fields.One2many(
+        'library.book.issue',
+        'member_id',
+        string='Book Issues'
+    )
 
     @api.model
     def create(self, vals):
@@ -28,3 +33,27 @@ class LibraryMember(models.Model):
     def _compute_display_name(self):
         for record in self:
             record.display_name = f"{record.name} - {record.member_name}"
+
+    def action_open_issue_wizard(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Issue Book',
+            'res_model': 'member.issue.book.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_member_id': self.id,
+            },
+        }
+
+    def action_view_book_issues(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Book Issues',
+            'res_model': 'library.book.issue',
+            'view_mode': 'tree,form',
+            'domain': [('member_id', '=', self.id)],
+            'context': {
+                'default_member_id': self.id,
+            },
+        }

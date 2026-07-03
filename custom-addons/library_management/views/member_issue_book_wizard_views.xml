@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_member_issue_book_wizard_form" model="ir.ui.view">
+        <field name="name">member.issue.book.wizard.form</field>
+        <field name="model">member.issue.book.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Issue Book">
+                <group>
+                    <field name="member_id"/>
+                    <field name="book_id"/>
+                    <field name="issue_date"/>
+                    <field name="due_date"/>
+                </group>
+
+                <footer>
+                    <button name="action_confirm"
+                            string="Confirm"
+                            type="object"
+                            class="btn-primary"/>
+                    <button string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
