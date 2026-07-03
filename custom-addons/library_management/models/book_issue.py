@@ -28,12 +28,12 @@ class LibraryBookIssue(models.Model):
         string='Issue Lines'
     )
 
-    book_names = fields.Char(string='Books', compute='_compute_book_names')
+    book_names = fields.Char(string='Books', compute='_compute_book_names', store=True)
 
-    @api.depends('line_ids.book_id')
+    @api.depends('book_id')
     def _compute_book_names(self):
         for rec in self:
-            rec.book_names = ', '.join(rec.line_ids.mapped('book_id.name'))
+            rec.book_names = rec.book_id.name if rec.book_id else ''
 
     @api.model
     def create(self, vals):
