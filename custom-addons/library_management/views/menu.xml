@@ -70,17 +70,6 @@
     <menuitem id="menu_library_reports"
             name="Reports"
             parent="menu_library_root"
-            sequence="50"/>
+            sequence="6"/>
 
-    <!-- Print PDF -->
-    <menuitem id="menu_library_report_pdf"
-            name="Print PDF"
-            parent="menu_library_reports"
-            sequence="1"/>
-
-    <!-- Print Excel -->
-    <menuitem id="menu_library_report_excel"
-            name="Print Excel"
-            parent="menu_library_reports"
-            sequence="2"/>
 </odoo>
