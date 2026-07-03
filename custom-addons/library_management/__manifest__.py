@@ -22,8 +22,9 @@
 
         'views/book_availability_wizard_views.xml',
         'views/return_book_wizard_views.xml',
-        'views/issue_book_wizard_views.xml',
-        
+        # 'views/issue_book_wizard_views.xml',
+        'views/confirm_book_issue_wizard_views.xml',
+
         'report/library_report.xml',
         'report/library_report_template.xml',
     ],

@@ -24,6 +24,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,confirmed,returned"/>
                     <button
                         name="action_return_book"
                         string="Return Book"
@@ -41,15 +42,22 @@
                 <sheet>
                     <group>
                         
-                        <field name="name" readonly="1"/>
-                        <field name="member_id"/>
-                        <field name="book_id"/>
-                        <field name="issue_date"/>
-                        <field name="due_date"/>
-                        <field name="return_date"/>
+                        <field name="name" readonly="1" readonly="status == 'confirmed'"/>
+                        <field name="member_id" readonly="status == 'confirmed'"/>
+                        <field name="book_id" readonly="status == 'confirmed'"/>
+                        <field name="issue_date" readonly="status == 'confirmed'"/>
+                        <field name="due_date" readonly="status == 'confirmed'"/>
+                        <field name="return_date" readonly="status == 'confirmed'"/>
                         <field name="status" readonly="1"/>
                     </group>
                 </sheet>
+                <footer>
+                    <button name="action_open_confirm_wizard"
+                            string="Confirm"
+                            type="object"
+                            class="btn-primary"
+                            invisible="status != 'draft'"/>
+                </footer>
             </form>
         </field>
     </record>

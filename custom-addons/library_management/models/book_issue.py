@@ -20,6 +20,11 @@ class LibraryBookIssue(models.Model):
         ('returned', 'Returned'),
         ('late', 'Late'),
     ],)
+    status = fields.Selection([
+        ('draft', 'Draft'),
+        ('confirmed', 'Confirmed'),
+        ('returned', 'Returned'),
+    ], string='Status', default='draft', tracking=True)
 
     @api.model
     def create(self, vals):
@@ -49,5 +54,20 @@ class LibraryBookIssue(models.Model):
             'target': 'new',
             'context': {
                 'default_book_issue_id': self.id,
+            },
+        }
+    def action_open_confirm_wizard(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Confirm Book Issue',
+            'res_model': 'confirm.book.issue.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {
+                'default_book_issue_id': self.id,
+                'default_member_id': self.member_id.id,
+                'default_book_id': self.book_id.id,
+                'default_issue_date': self.issue_date,
+                'default_due_date': self.due_date,
             },
         }

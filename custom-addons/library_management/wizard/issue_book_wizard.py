@@ -15,7 +15,7 @@ class IssueBookWizard(models.TransientModel):
 
     issue_date = fields.Date(
         string="Issue Date",
-        default=fields.Date.today
+        default=fields.Date.today,
     )
 
     due_date = fields.Date(
