@@ -43,6 +43,16 @@
                         <field name="membership_type"/>
                         <field name="active"/>
                     </group>
+                    <group string="Book Issue History">
+                        <field name="book_issue_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="issue_date"/>
+                                <field name="due_date"/>
+                                <field name="status"/>
+                            </tree>
+                        </field>
+                    </group>
                 </sheet>
             </form>
         </field>

@@ -7,3 +7,4 @@ access_issue_book_wizard,issue.book.wizard,model_issue_book_wizard,,1,1,1,1
 access_book_availability_wizard,book.availability.wizard,model_book_availability_wizard,,1,1,1,1
 access_confirm_book_issue_wizard,confirm.book.issue.wizard,model_confirm_book_issue_wizard,,1,1,1,1
 access_member_issue_book_wizard,member.issue.book.wizard,model_member_issue_book_wizard,,1,1,1,1
+access_library_book_issue_line,library.book.issue.line,model_library_book_issue_line,,1,1,1,1

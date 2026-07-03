@@ -5,6 +5,7 @@ from odoo.exceptions import ValidationError
 class LibraryBookIssue(models.Model):
     _name = 'library.book.issue'
     _description = 'Book Issue'
+    _rec_name = 'name'
 
     name = fields.Char(string="Issue ID", required=True, copy=False, readonly=True, default="New")
 
@@ -25,6 +26,12 @@ class LibraryBookIssue(models.Model):
         ('issued', 'Issued'),
         ('returned', 'Returned'),
     ], string='Status', default='draft')
+
+    line_ids = fields.One2many(
+        'library.book.issue.line',
+        'issue_id',
+        string='Issue Lines'
+    )
 
     @api.model
     def create(self, vals):

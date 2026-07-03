@@ -57,6 +57,15 @@
                                 class="btn-primary"
                                 invisible="status != 'draft'"/>
                     </group>
+                    <notebook>
+                        <page string="Issue Lines">
+                            <field name="line_ids">
+                                <tree editable="bottom">
+                                    <field name="book_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
 
                 </sheet>
             </form>
