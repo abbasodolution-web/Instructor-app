@@ -16,11 +16,6 @@ class LibraryBookIssue(models.Model):
     due_date = fields.Date(string="Due Date")
     return_date = fields.Date(string="Return Date")
 
-    # status = fields.Selection([
-    #     ('issued', 'Issued'),
-    #     ('returned', 'Returned'),
-    #     ('late', 'Late'),
-    # ],)
     status = fields.Selection([
         ('draft', 'Draft'),
         ('issued', 'Issued'),
@@ -32,6 +27,13 @@ class LibraryBookIssue(models.Model):
         'issue_id',
         string='Issue Lines'
     )
+
+    book_names = fields.Char(string='Books', compute='_compute_book_names')
+
+    @api.depends('line_ids.book_id')
+    def _compute_book_names(self):
+        for rec in self:
+            rec.book_names = ', '.join(rec.line_ids.mapped('book_id.name'))
 
     @api.model
     def create(self, vals):

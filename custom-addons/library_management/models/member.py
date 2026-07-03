@@ -16,6 +16,7 @@ class LibraryMember(models.Model):
         ('teacher', 'Teacher'),
         ('public', 'Public'),
     ], string="Membership Type")
+    
     active = fields.Boolean(string="Active", default=True)
     book_issue_ids = fields.One2many(
         'library.book.issue',
