@@ -50,13 +50,13 @@
                         <field name="return_date" readonly="status == 'confirmed'"/>
                         <field name="status" readonly="1"/>
                     </group>
-                        <div class="oe_button_box" name="button_box">
-                            <button name="action_open_confirm_wizard"
+                    <group>
+                        <button name="action_open_confirm_wizard"
                                 string="Confirm"
                                 type="object"
-                                class="btn btn-primary"
+                                class="btn-primary"
                                 invisible="status != 'draft'"/>
-                        </div>
+                    </group>
 
                 </sheet>
             </form>
