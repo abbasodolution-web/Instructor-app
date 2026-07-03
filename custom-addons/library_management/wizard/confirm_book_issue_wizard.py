@@ -1,4 +1,5 @@
 from odoo import models, fields
+from odoo.exceptions import ValidationError
 
 
 class ConfirmBookIssueWizard(models.TransientModel):
@@ -19,5 +20,7 @@ class ConfirmBookIssueWizard(models.TransientModel):
             'due_date': self.due_date,
             'status': 'issued',
         })
-
+        if self.book_issue_id.book_id.available_copies <= 0:
+            raise ValidationError("No copies available.")
+        self.book_issue_id.book_id.available_copies -= 1
         return {'type': 'ir.actions.act_window_close'}
