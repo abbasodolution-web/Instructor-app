@@ -5,13 +5,13 @@
         <field name="name">Book Issue Form</field>
         <field name="url">/book_issue</field>
         <field name="parent_id" ref="website.main_menu"/>
-        <field name="sequence" type="int">10</field>
+        <field name="sequence" type="int">2</field>
     </record>
     <!-- For Return -->
     <record id="website_menu_book_return" model="website.menu">
         <field name="name">Book Return Form</field>
         <field name="url">/book_return</field>
         <field name="parent_id" ref="website.main_menu"/>
-        <field name="sequence" type="int">51</field>
+        <field name="sequence" type="int">3</field>
     </record>
 </odoo>
