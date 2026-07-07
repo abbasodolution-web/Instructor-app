@@ -7,7 +7,7 @@
     'author': 'SMAbbasS',
     'sequence': -300,
     'license': 'LGPL-3',
-    'depends': ['base','mail'],
+    'depends': ['base','mail','website'],
     'data': [
         'security/ir.model.access.csv',
 
@@ -31,6 +31,9 @@
         'report/library_report_template.xml',
         'report/book_issue_report_template.xml',
         'report/book_issue_report_action.xml',
+
+        'website_views/website_book_issue_template.xml',
+        'website_views/website_menu.xml',
     ],
     'installable': True,
     'application': True,

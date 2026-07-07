@@ -51,6 +51,7 @@
         sequence="3"/>
 
 
+    <!-- Wizard to check Availbility -->
     <record id="action_book_availability_wizard" model="ir.actions.act_window">
         <field name="name">Check Book Availability</field>
         <field name="res_model">book.availability.wizard</field>
@@ -63,7 +64,7 @@
         name="Check Availability"
         parent="menu_library_root"
         action="action_book_availability_wizard"
-        sequence="5"/>
+        sequence="4"/>
 
     <!-- For Report -->
     <!-- Reports Main Menu -->
@@ -71,5 +72,5 @@
           name="Reports"
           parent="menu_library_root"
           action="action_book_issue_report_wizard"
-          sequence="6"/>
+          sequence="5"/>
 </odoo>
