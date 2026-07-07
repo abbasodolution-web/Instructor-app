@@ -12,7 +12,7 @@
                             <option value="">Select Member</option>
                             <t t-foreach="members" t-as="member">
                                 <option t-att-value="member.id">
-                                    <t t-esc="member.name"/>
+                                    <t t-esc="member.name"/> - <t t-esc="member.member_name"/>
                                 </option>
                             </t>
                         </select>
@@ -24,7 +24,7 @@
                             <option value="">Select Book</option>
                             <t t-foreach="books" t-as="book">
                                 <option t-att-value="book.id">
-                                    <t t-esc="book.book_name"/>
+                                    <t t-esc="book.name"/> - <t t-esc="book.book_name"/>
                                 </option>
                             </t>
                         </select>
