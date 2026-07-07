@@ -8,9 +8,11 @@ class LibraryWebsiteController(http.Controller):
     def book_issue_form(self, **kwargs):
         members = request.env['library.member'].sudo().search([])
         books = request.env['library.book'].sudo().search([])
+        success = kwargs.get('success')
         return request.render('library_management.book_issue_website_form', {
             'members': members,
             'books': books,
+            'success': success,
         })
 
     @http.route('/book_issue/submit', type='http', auth='public', website=True, methods=['POST'], csrf=False)
@@ -23,4 +25,4 @@ class LibraryWebsiteController(http.Controller):
             'return_date': post.get('return_date') or False,
             'status': post.get('status'),
         })
-        return request.redirect('/book_issue')
+        return request.redirect('/book_issue?success=1')
