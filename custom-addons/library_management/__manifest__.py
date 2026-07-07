@@ -13,9 +13,6 @@
 
         'data/sequence.xml',
 
-        
-        'menus/menu.xml',
-
         'views/book_views.xml',
         'views/member_views.xml',
         'views/book_issue_views.xml',
@@ -27,6 +24,8 @@
         'wizard_views/confirm_book_issue_wizard_views.xml',
         'wizard_views/member_issue_book_wizard_views.xml',
         'wizard_views/book_issue_report_wizard_views.xml',
+
+        'menus/menu.xml',
 
         'report/library_report.xml',
         'report/library_report_template.xml',
