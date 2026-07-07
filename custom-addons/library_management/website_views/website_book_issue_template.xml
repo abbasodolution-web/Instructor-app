@@ -55,8 +55,7 @@
                                         <input type="date"
                                                name="issue_date"
                                                class="form-control"
-                                               t-att-value="today"
-                                               readonly="readonly"/>
+                                               t-att-value="today"/>
                                     </div>
 
                                     <div class="mb-3">
@@ -64,8 +63,7 @@
                                         <input type="date"
                                                name="due_date"
                                                class="form-control"
-                                               t-att-value="due_date"
-                                               readonly="readonly"/>
+                                               t-att-value="due_date"/>
                                     </div>
 
                                     <button type="submit" class="btn btn-primary w-100">Issue</button>
