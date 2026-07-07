@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Root Menu -->
     <record id="website_menu_library_forms" model="website.menu">
         <field name="name">Library Forms</field>
         <field name="url">/library_forms</field>
         <field name="parent_id" ref="website.main_menu"/>
-        <field name="sequence" type="int">10</field>
-    </record>
-
-    <!-- Book Issue child -->
-    <record id="website_menu_book_issue" model="website.menu">
-        <field name="name">Book Issue Form</field>
-        <field name="url">/book_issue</field>
-        <field name="parent_id" ref="library_management.website_menu_library_forms"/>
-        <field name="sequence" type="int">1</field>
-    </record>
-
-    <!-- Book Return child -->
-    <record id="website_menu_book_return" model="website.menu">
-        <field name="name">Book Return Form</field>
-        <field name="url">/book_return</field>
-        <field name="parent_id" ref="library_management.website_menu_library_forms"/>
-        <field name="sequence" type="int">2</field>
+        <field name="sequence" type="int">50</field>
     </record>
 </odoo>

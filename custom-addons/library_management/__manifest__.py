@@ -35,6 +35,7 @@
         'website_views/website_menu.xml',
         'website_views/website_book_issue_template.xml',
         'website_views/website_book_return_template.xml',
+        'website_views/library_forms_page.xml',
     ],
     'installable': True,
     'application': True,

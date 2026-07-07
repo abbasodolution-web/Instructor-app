@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="library_forms_page" name="Library Forms Page">
+        <t t-call="website.layout">
+            <div class="container mt-5 mb-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card shadow">
+                            <div class="card-body p-5 text-center">
+                                <h2 class="mb-4">Library Forms</h2>
+                                <p class="mb-4">Choose the form you want to use.</p>
+
+                                <div class="d-grid gap-3">
+                                    <a href="/book_issue" class="btn btn-primary btn-lg">
+                                        Book Issue Form
+                                    </a>
+
+                                    <a href="/book_return" class="btn btn-outline-primary btn-lg">
+                                        Book Return Form
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

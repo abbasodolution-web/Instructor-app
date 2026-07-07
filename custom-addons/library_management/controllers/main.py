@@ -6,6 +6,10 @@ from dateutil.relativedelta import relativedelta
 
 class LibraryWebsiteController(http.Controller):
 
+    @http.route('/library_forms', type='http', auth='public', website=True)
+    def library_forms_page(self, **kwargs):
+        return request.render('library_management.library_forms_page')
+
     @http.route('/book_issue', type='http', auth='public', website=True)
     def book_issue_form(self, **kwargs):
         members = request.env['library.member'].sudo().search([])
