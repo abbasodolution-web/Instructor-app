@@ -1,72 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="book_issue_website_form" name="Book Issue Website Form">
-        <t t-if="error">
-            <div class="alert alert-danger">
-                Selected book is not available.
-            </div>
-        </t>
-        <t t-if="success">
-            <div class="alert alert-success alert-dismissible fade show shadow-sm mb-4" role="alert">
-                <strong>Success!</strong> Your book issue request has been submitted successfully.
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        </t>
         <t t-call="website.layout">
             <div class="container mt-5 mb-5">
-                <h2 class="mb-4">Book Issue Form</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card shadow">
+                            <div class="card-body p-4">
+                                <h2 class="mb-4 text-center">Book Issue Form</h2>
 
-                <form action="/book_issue/submit" method="post">
-                    <div class="mb-3">
-                        <label class="form-label">Member</label>
-                        <select name="member_id" class="form-control" required="required">
-                            <option value="">Select Member</option>
-                            <t t-foreach="members" t-as="member">
-                                <option t-att-value="member.id">
-                                    <t t-esc="member.name"/> - <t t-esc="member.member_name"/>
-                                </option>
-                            </t>
-                        </select>
+                                <t t-if="error">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>Error!</strong> Selected book is not available.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"/>
+                                    </div>
+                                </t>
+
+                                <t t-if="success">
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>Success!</strong> Book issued successfully.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"/>
+                                    </div>
+                                </t>
+
+                                <form action="/book_issue/submit" method="post">
+                                    <div class="mb-3">
+                                        <label class="form-label">Member</label>
+                                        <select name="member_id" class="form-control" required="required">
+                                            <option value="">Select Member</option>
+                                            <t t-foreach="members" t-as="member">
+                                                <option t-att-value="member.id">
+                                                    <t t-esc="member.name"/> -
+                                                    <t t-esc="member.member_name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Book</label>
+                                        <select name="book_id" class="form-control" required="required">
+                                            <option value="">Select Book</option>
+                                            <t t-foreach="books" t-as="book">
+                                                <option t-att-value="book.id">
+                                                    <t t-esc="book.name"/> -
+                                                    <t t-esc="book.book_name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Issue Date</label>
+                                        <input type="date"
+                                               name="issue_date"
+                                               class="form-control"
+                                               t-att-value="today"
+                                               readonly="readonly"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Due Date</label>
+                                        <input type="date"
+                                               name="due_date"
+                                               class="form-control"
+                                               t-att-value="due_date"
+                                               readonly="readonly"/>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary w-100">Issue</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Book</label>
-                        <select name="book_id" class="form-control" required="required">
-                            <option value="">Select Book</option>
-                            <t t-foreach="books" t-as="book">
-                                <option t-att-value="book.id">
-                                    <t t-esc="book.name"/> - <t t-esc="book.book_name"/>
-                                </option>
-                            </t>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Issue Date</label>
-                        <input type="date" name="issue_date" class="form-control" t-att-value="today"/>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Due Date</label>
-                        <input type="date" name="due_date" class="form-control" t-att-value="due_date"/>
-                    </div>
-
-                    <!-- <div class="mb-3">
-                        <label class="form-label">Return Date</label>
-                        <input type="date" name="return_date" class="form-control"/>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label">Status</label>
-                        <select name="status" class="form-control">
-                            <option value="draft">Draft</option>
-                            <option value="issued">Issued</option>
-                            <option value="returned">Returned</option>
-                        </select>
-                    </div> -->
-
-                    <button type="submit" class="btn btn-primary">Issue</button>
-                </form>
+                </div>
             </div>
         </t>
     </template>

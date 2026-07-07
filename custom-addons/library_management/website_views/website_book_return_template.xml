@@ -53,7 +53,7 @@
 
                                     <div class="mb-3">
                                         <label class="form-label">Return Date</label>
-                                        <input type="date" name="return_date" class="form-control" t-att-value="today" readonly="readonly"/>
+                                        <input type="date" name="return_date" class="form-control" t-att-value="today"/>
                                     </div>
 
                                     <button type="submit" class="btn btn-primary w-100">Return</button>
