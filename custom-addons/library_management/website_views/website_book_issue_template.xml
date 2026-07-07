@@ -43,15 +43,15 @@
 
                     <div class="mb-3">
                         <label class="form-label">Issue Date</label>
-                        <input type="date" name="issue_date" class="form-control"/>
+                        <input type="date" name="issue_date" class="form-control" t-att-value="today"/>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Due Date</label>
-                        <input type="date" name="due_date" class="form-control"/>
+                        <input type="date" name="due_date" class="form-control" t-att-value="due_date"/>
                     </div>
 
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label class="form-label">Return Date</label>
                         <input type="date" name="return_date" class="form-control"/>
                     </div>
@@ -63,9 +63,9 @@
                             <option value="issued">Issued</option>
                             <option value="returned">Returned</option>
                         </select>
-                    </div>
+                    </div> -->
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Issue</button>
                 </form>
             </div>
         </t>

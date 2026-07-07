@@ -1,5 +1,7 @@
 from odoo import http
 from odoo.http import request
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 
 class LibraryWebsiteController(http.Controller):
@@ -10,11 +12,15 @@ class LibraryWebsiteController(http.Controller):
         books = request.env['library.book'].sudo().search([])
         success = kwargs.get('success')
         error = kwargs.get('error')
+        today = date.today()
+        due_date = today + relativedelta(months=1)
         return request.render('library_management.book_issue_website_form', {
             'members': members,
             'books': books,
             'success': success,
             'error': error,
+            'today': today,
+            'due_date': due_date,
         })
 
     @http.route('/book_issue/submit', type='http', auth='public', website=True, methods=['POST'], csrf=False)
@@ -29,8 +35,8 @@ class LibraryWebsiteController(http.Controller):
             'book_id': book.id,
             'issue_date': post.get('issue_date'),
             'due_date': post.get('due_date'),
-            'return_date': post.get('return_date') or False,
-            'status': post.get('status'),
+            'return_date': False,
+            'status': 'issued',
         })
 
         book.write({
