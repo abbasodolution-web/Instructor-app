@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="book_return_website_form" name="Book Return Website Form">
+        <t t-call="website.layout">
+            <div class="container mt-5 mb-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card shadow">
+                            <div class="card-body p-4">
+                                <h2 class="mb-4 text-center">Book Return Form</h2>
+
+                                <t t-if="success">
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>Success!</strong> Book returned successfully.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"/>
+                                    </div>
+                                </t>
+
+                                <t t-if="error">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>Error!</strong> Invalid return request.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"/>
+                                    </div>
+                                </t>
+
+                                <form action="/book_return/submit" method="post">
+                                    <div class="mb-3">
+                                        <label class="form-label">Book Issue</label>
+                                        <select name="book_issue_id" class="form-control" required="required" onchange="window.location.href='/book_return?book_issue_id=' + this.value">
+                                            <option value="">Select Book Issue</option>
+                                            <t t-foreach="issues" t-as="issue">
+                                                <option t-att-value="issue.id"
+                                                        t-att-selected="selected_issue and selected_issue.id == issue.id">
+                                                    <t t-esc="issue.name"/> -
+                                                    <t t-esc="issue.member_id.member_name"/> -
+                                                    <t t-esc="issue.book_id.book_name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Issue Date</label>
+                                        <input type="date" name="issue_date" class="form-control"
+                                               t-att-value="selected_issue.issue_date if selected_issue else ''" readonly="readonly"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Due Date</label>
+                                        <input type="date" name="due_date" class="form-control"
+                                               t-att-value="selected_issue.due_date if selected_issue else ''" readonly="readonly"/>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Return Date</label>
+                                        <input type="date" name="return_date" class="form-control" t-att-value="today" readonly="readonly"/>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary w-100">Return</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

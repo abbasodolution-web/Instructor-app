@@ -44,3 +44,43 @@ class LibraryWebsiteController(http.Controller):
         })
 
         return request.redirect('/book_issue?success=1')
+    
+        # For Book Return Form
+
+    @http.route('/book_return', type='http', auth='public', website=True)
+    def book_return_form(self, **kwargs):
+        issues = request.env['library.book.issue'].sudo().search([
+            ('status', '=', 'issued')
+        ])
+        selected_issue = False
+        issue_id = kwargs.get('book_issue_id')
+        if issue_id:
+            selected_issue = request.env['library.book.issue'].sudo().browse(int(issue_id))
+
+        return request.render('library_management.book_return_website_form', {
+            'issues': issues,
+            'selected_issue': selected_issue,
+            'today': date.today(),
+            'success': kwargs.get('success'),
+            'error': kwargs.get('error'),
+        })
+
+    @http.route('/book_return/submit', type='http', auth='public', website=True, methods=['POST'], csrf=False)
+    def book_return_submit(self, **post):
+        issue_id = int(post.get('book_issue_id'))
+        issue = request.env['library.book.issue'].sudo().browse(issue_id)
+
+        if not issue or issue.status != 'issued':
+            return request.redirect('/book_return?error=1')
+
+        issue.write({
+            'return_date': post.get('return_date'),
+            'status': 'returned',
+        })
+
+        if issue.book_id:
+            issue.book_id.sudo().write({
+                'available_copies': issue.book_id.available_copies + 1
+            })
+
+        return request.redirect('/book_return?success=1')
