@@ -81,3 +81,38 @@ class LibraryBookIssue(models.Model):
                 'default_due_date': self.due_date,
             },
         }
+    
+    @api.model
+    def cron_create_overdue_book_activity(self):
+        today = fields.date.today()
+
+        admin_user = self.env.ref('base.user_admin')
+        activity_type = self.env.ref('mail.mail_activity_data_todo')
+
+        overdue_issues = self.search([
+            ('status', '=', 'issued'),
+            ('due_date', '<', today),
+        ])
+
+        for issue in overdue_issues:
+            existing_activity = self.env['mail.activity'].search([
+                ('res_model', '=', 'library.book.issue'),
+                ('res_id', '=', issue.id),
+                ('summary', '=', 'Overdue Book Return'),
+            ], limit=1)
+
+            if not existing_activity:
+                self.env['mail.activity'].create({
+                    'res_model_id': self.env['ir.model']._get('library.book.issue').id,
+                    'res_id': issue.id,
+                    'user_id': admin_user.id,
+                    'activity_type_id': activity_type.id,
+                    'summary': 'Overdue Book Return',
+                    'note': 'The book issue %s is overdue. Member: %s, Book: %s, Due Date: %s' % (
+                        issue.name,
+                        issue.member_id.member_name,
+                        issue.book_id.book_name,
+                        issue.due_date
+                    ),
+                    'date_deadline': today,
+                })

@@ -12,6 +12,7 @@
         'security/ir.model.access.csv',
 
         'data/sequence.xml',
+        'data/overdue_book_issue_cron.xml',
 
         'views/book_views.xml',
         'views/member_views.xml',
