@@ -5,6 +5,7 @@ from odoo.exceptions import ValidationError
 class LibraryBookIssue(models.Model):
     _name = 'library.book.issue'
     _description = 'Book Issue'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _rec_name = 'name'
 
     name = fields.Char(string="Issue ID", required=True, copy=False, readonly=True, default="New")
